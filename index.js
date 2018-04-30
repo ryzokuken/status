@@ -5,14 +5,18 @@ const netstat = require('node-netstat');
 const app = express();
 app.use(cors());
 
+const payload = {};
+
+netstat(
+  {
+    watch: true
+  },
+  data => {
+    payload[data.local.port + data.remote.port] = data;
+  }
+);
+
 app.get('/', (req, res) => {
-  const payload = {};
-  netstat(
-    {
-      sync: true
-    },
-    data => (payload[data.local.port + data.remote.port] = data)
-  );
   res.json(payload);
 });
 
