@@ -16,7 +16,7 @@ netstat(
   }
 );
 
-app.get('/', (req, res) => {
+app.get('/payload', (req, res) => {
   res.json(payload);
 });
 
