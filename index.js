@@ -5,11 +5,12 @@ const netstat = require('node-netstat');
 const app = express();
 app.use(cors());
 
-const payload = {};
+var payload = {};
 
 app.get('/', (req, res) => {
-  netstat({}, data => (payload[data.local.port + data.remote.port] = data));
   res.json(payload);
+  payload = {};
+  netstat({}, data => (payload[data.local.port + data.remote.port] = data));
 });
 
 app.listen(8000, () => console.log('Status app listening on port 8000!'));
