@@ -1,0 +1,12 @@
+{
+  "name": "status",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ujjwal Sharma <usharma1998@gmail.com> (ryzokuken.github.io)",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "node-netstat": "^1.4.2"
+  }
+}
