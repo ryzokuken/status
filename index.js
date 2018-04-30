@@ -12,7 +12,7 @@ netstat(
     watch: true
   },
   data => {
-    payload[data.local.port + data.remote.port] = data;
+    payload[data.protocol + data.local.port] = data;
   }
 );
 
