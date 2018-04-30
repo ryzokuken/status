@@ -18,10 +18,17 @@ netstat(
     watch: true
   },
   data => {
-    payload[data.protocol + data.local.port] = data;
+    const key = data.protocol + data.local.port;
+    payload[key] = data;
+    io.to('common').emit('status', {key: key, data: data});
   }
 );
 
 app.get('/payload', (req, res) => {
   res.json(payload);
+});
+
+io.on('connection', socket => {
+  console.log(`Socket ${socket.id} connected!`);
+  socket.join('common');
 });
